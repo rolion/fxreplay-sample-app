@@ -1,0 +1,31 @@
+fa-icon{
+    padding-left: 10px;
+    
+}
+
+.fxreplay-input-number{
+    /* appearance: none; */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+	appearance: none;
+    outline: none;
+    background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+    color: white;
+    padding: 0.25em;
+}
+.input-container{
+    border: 2px solid #4C4A5E;
+    border-radius:15px;
+}
+
+.input-container > fa-icon{
+    padding-top: 0.25em;
+}
+
+
+label{
+    color: white;
+}

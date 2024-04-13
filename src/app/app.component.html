@@ -1,13 +1,14 @@
-<div class="container">
+<div class="container fxreplay-card">
     <div class="row">
       <div class="d-flex flex-row">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" 
+          <input class="fxreplay-radio" 
             type="radio" 
             name="inlineRadioOptions" 
             id="inlineRadio1" 
             (change)="onBalanceSelected('initial')" 
-            value="initial">
+            value="initial"
+            [attr.checked]="true">
           <label 
             class="form-check-label" 
             for="inlineRadio1"
@@ -15,7 +16,7 @@
         </div>
         <div class="form-check form-check-inline">
           <input 
-              class="form-check-input" 
+              class="fxreplay-radio" 
               type="radio" 
               name="inlineRadioOptions" 
               id="inlineRadio2" 
@@ -27,21 +28,24 @@
     <div class="row">
       <div class="d-flex flex-row">
         @for(porcentage of defaultPercentages; track porcentage){
-          <span class="badge text-bg-danger">{{porcentage}}%</span>
+          <app-chips [value]="porcentage.value" [isSelected]="porcentage.isSelected" (percentageSelected) = "selectPercentage($event)"></app-chips>
         }
       </div>
     </div>
 
     <div class="row">
       <div class="d-flex flex-row">
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Risk Percent</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3 form-icon">
+          <label for="exampleFormControlInput1 " class="form-label">Risk Percent</label>
+          <input type="number" class="form-control fxreplay-input-number" id="exampleFormControlInput1"  value="{{riskPercent | number:'1.2-2'}}">
+        </div> -->
+        <app-input labelText="Risk Percent" [inputValue]="riskPercent"></app-input>
+        <!-- <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label">Risk amount</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
+          <fa-icon [icon]="faPercent" ></fa-icon>
+          <input type="number" class="form-control fxreplay-input-number" id="exampleFormControlInput1" value="{{riskAmount | number:'1.2-2'}}" >
+        </div> -->
+        <app-input labelText="Risk amount" icon="dollar" [inputValue]="riskAmount"></app-input>
       </div>
     </div>
   </div>
