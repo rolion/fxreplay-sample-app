@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { faPercent, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common'
@@ -10,7 +10,8 @@ import { CommonModule } from '@angular/common'
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'
 })
-export class InputComponent implements OnInit, OnChanges {
+export class InputComponent implements OnInit {
+
   
   faPercent = faPercent
   faDollarSign = faDollarSign 
@@ -18,12 +19,15 @@ export class InputComponent implements OnInit, OnChanges {
   @Input() labelText: string =''
   @Input() inputValue?: number
   @Input() icon='porcent'
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes){
-      console.log('changes', changes)
-    }
-  }
+  @Input() sendValueChange = false
+  @Output() newInput = new EventEmitter<number>();
   ngOnInit(): void {
     
+  }
+
+  valueChange(event: any) {
+    if (this.sendValueChange == true){
+      this.newInput.emit(event.target.value)
+    }
   }
 }

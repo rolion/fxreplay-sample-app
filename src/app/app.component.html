@@ -35,16 +35,7 @@
 
     <div class="row">
       <div class="d-flex flex-row">
-        <!-- <div class="mb-3 form-icon">
-          <label for="exampleFormControlInput1 " class="form-label">Risk Percent</label>
-          <input type="number" class="form-control fxreplay-input-number" id="exampleFormControlInput1"  value="{{riskPercent | number:'1.2-2'}}">
-        </div> -->
-        <app-input labelText="Risk Percent" [inputValue]="riskPercent"></app-input>
-        <!-- <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Risk amount</label>
-          <fa-icon [icon]="faPercent" ></fa-icon>
-          <input type="number" class="form-control fxreplay-input-number" id="exampleFormControlInput1" value="{{riskAmount | number:'1.2-2'}}" >
-        </div> -->
+        <app-input labelText="Risk Percent" [inputValue]="riskPercent" [sendValueChange]="true" (newInput)="updatedRisk($event)"></app-input>
         <app-input labelText="Risk amount" icon="dollar" [inputValue]="riskAmount"></app-input>
       </div>
     </div>

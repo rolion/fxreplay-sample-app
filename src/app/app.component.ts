@@ -40,15 +40,14 @@ export class AppComponent implements OnInit  {
   }
 
   selectPercentage(percentage: number){
-    this.defaultPercentages = this.defaultPercentages.map((item)=>{
-      if (item.value == percentage){
-        item.isSelected = true
-      }else {
-        item.isSelected = false
-      }
-      return item
-    })
     this.riskPercent= percentage;
+    this.updateSelectedPercentageByValue(this.riskPercent)
+    this.calculateRiskAmount()
+  }
+
+  updatedRisk(amount:any){
+    this.riskPercent =amount
+    this.updateSelectedPercentageByValue(this.riskPercent)
     this.calculateRiskAmount()
   }
 
@@ -56,6 +55,17 @@ export class AppComponent implements OnInit  {
     let amount= this.balanceType=='initial'? this.initialBalance: this.currentBalance;
     this.riskAmount = (amount * this.riskPercent)/100
     console.log('riskamount ', this.riskAmount)
+  }
+
+  updateSelectedPercentageByValue(value: number){
+    this.defaultPercentages = this.defaultPercentages.map((item)=>{
+      if (item.value == value){
+        item.isSelected = true
+      }else {
+        item.isSelected = false
+      }
+      return item
+    })
   }
   
 }
