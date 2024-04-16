@@ -2,6 +2,7 @@
 label{
     color: white;
 }
+
 .fxreplay-card{
     background-color: #242331;
     border-color: #4C4A5E;
@@ -9,6 +10,11 @@ label{
     border-width: 1px ;
     border-radius: 25px;
     padding: 16px;
+}
+
+.fxreplay-input-container{
+    display: flex;
+    justify-content: space-between;
 }
 
 .fxreplay-radio {

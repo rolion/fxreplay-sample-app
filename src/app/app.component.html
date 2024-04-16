@@ -1,43 +1,51 @@
-<div class="container fxreplay-card">
-    <div class="row">
-      <div class="d-flex flex-row">
-        <div class="form-check form-check-inline">
-          <input class="fxreplay-radio" 
-            type="radio" 
-            name="inlineRadioOptions" 
-            id="inlineRadio1" 
-            (change)="onBalanceSelected('initial')" 
-            value="initial"
-            [attr.checked]="true">
-          <label 
-            class="form-check-label" 
-            for="inlineRadio1"
-          >Initial balance</label>
+<div class="container ">
+   <div class="row justify-content-center">
+    <div class="col-4">
+      <div class="fxreplay-card  ">
+        <div class="">
+          <div class="fxreplay-input-container">
+            <div class="">
+              <input class="fxreplay-radio" 
+                type="radio" 
+                name="inlineRadioOptions" 
+                id="inlineRadio1" 
+                (change)="onBalanceSelected('initial')" 
+                value="initial"
+                [attr.checked]="true">
+              <label 
+                class="form-check-label" 
+                for="inlineRadio1"
+              >Initial balance</label>
+            </div>
+            <div class="">
+              <input 
+                  class="fxreplay-radio" 
+                  type="radio" 
+                  name="inlineRadioOptions" 
+                  id="inlineRadio2" 
+                  value="Current"
+                  (change)="onBalanceSelected('current')" >
+              <label class="form-check-label" for="inlineRadio2">Current balance</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="">
+              @for(porcentage of defaultPercentages; track porcentage){
+                <app-chips [value]="porcentage.value" [isSelected]="porcentage.isSelected" (percentageSelected) = "selectPercentage($event)"></app-chips>
+              }
+            </div>
+          </div>
+    
+          <div class="fxreplay-input-container">
+              <div class="col-6">
+                <app-input labelText="Risk Percent" [inputValue]="riskPercent" [sendValueChange]="true" (newInput)="updatedRisk($event)"></app-input>
+              </div>
+              <div class="col-6">
+                <app-input labelText="Risk amount" icon="dollar" [inputValue]="riskAmount"></app-input>
+              </div>
+          </div>
         </div>
-        <div class="form-check form-check-inline">
-          <input 
-              class="fxreplay-radio" 
-              type="radio" 
-              name="inlineRadioOptions" 
-              id="inlineRadio2" 
-              value="Current"
-              (change)="onBalanceSelected('current')" >
-          <label class="form-check-label" for="inlineRadio2">Current balance</label>
       </div>
     </div>
-    <div class="row">
-      <div class="d-flex flex-row">
-        @for(porcentage of defaultPercentages; track porcentage){
-          <app-chips [value]="porcentage.value" [isSelected]="porcentage.isSelected" (percentageSelected) = "selectPercentage($event)"></app-chips>
-        }
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="d-flex flex-row">
-        <app-input labelText="Risk Percent" [inputValue]="riskPercent" [sendValueChange]="true" (newInput)="updatedRisk($event)"></app-input>
-        <app-input labelText="Risk amount" icon="dollar" [inputValue]="riskAmount"></app-input>
-      </div>
-    </div>
-  </div>
+   </div>
 </div>

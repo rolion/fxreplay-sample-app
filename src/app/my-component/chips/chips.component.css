@@ -3,5 +3,6 @@ button{
     color: white;
     border: 1px solid #4C4A5E;
     border-radius: 28.19px;
-    padding: 0.125em 0.4em
+    padding: 0.125em 0.4em;
+    margin-right: 0.37em;
 }
