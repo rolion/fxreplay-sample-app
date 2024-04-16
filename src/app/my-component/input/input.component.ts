@@ -25,9 +25,14 @@ export class InputComponent implements OnInit {
     
   }
 
+  isNumeric (val: string) : boolean  {
+    return !isNaN(Number(val));
+ }
+
   valueChange(event: any) {
-    if (this.sendValueChange == true){
-      this.newInput.emit(event.target.value)
+    let value = event.target.value
+    if (this.sendValueChange == true && this.isNumeric(value)){
+      this.newInput.emit(value)
     }
   }
 }
