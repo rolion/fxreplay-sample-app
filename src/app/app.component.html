@@ -28,12 +28,10 @@
               <label class="form-check-label" for="inlineRadio2">Current balance</label>
             </div>
           </div>
-          <div class="row">
-            <div class="">
+          <div class="fxreplay-input-container mt-2 mb-2">
               @for(porcentage of defaultPercentages; track porcentage){
                 <app-chips [value]="porcentage.value" [isSelected]="porcentage.isSelected" (percentageSelected) = "selectPercentage($event)"></app-chips>
               }
-            </div>
           </div>
     
           <div class="fxreplay-input-container">
